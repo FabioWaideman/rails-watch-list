@@ -1,16 +1,23 @@
-<h1>My Lists</h1>
 
-<%= link_to "Add List", new_list_path %>
+  <div class="card mb-3">
+    <div class="card-body d-flex justify-content-between">
+      <h4 class= "mt-2" >My Lists</h4>
+      <%= link_to "Add List", new_list_path, class:"btn btn-success m-2" %>
+    </div>
+  </div>
 
-<div class="row row-cols-1 row-cols-md-2 g-4">
   <% @lists.each do |list| %>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= list.name %></h5>
-          <%= link_to "View List", list_path(list.id), class:"btn btn-primary" %>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src= <%= cl_image_path list.photo.key, width: 400, height: 300, crop: :limit %> class="card-img-top mw-25">
+        </div>
+        <div class="col-md-8 d-flex">
+          <div class="card-body">
+            <h5 class="card-title"><%= list.name %></h5>
+            <%= link_to "View List", list_path(list.id), class:"btn btn-success" %>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
-</div>
